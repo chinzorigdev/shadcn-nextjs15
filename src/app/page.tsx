@@ -34,6 +34,16 @@ import { BadgeCheckIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "@/components/ui/calendar";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+import { Checkbox } from "@/components/ui/checkbox";
+
 export default function Home() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
 
@@ -235,6 +245,77 @@ export default function Home() {
             className="rounded-md border shadow-sm"
             captionLayout="dropdown"
           />
+        </CardContent>
+      </Card>
+      <Card className="w-full max-w-sm mx-auto my-10">
+        <CardHeader>
+          <CardTitle>Carousel</CardTitle>
+          <CardDescription>Carousel</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Carousel className="w-full max-w-xs">
+            <CarouselContent>
+              {Array.from({ length: 5 }).map((_, index) => (
+                <CarouselItem key={index}>
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-6">
+                        <span className="text-4xl font-semibold">
+                          {index + 1}
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </CardContent>
+      </Card>
+      <Card className="w-full max-w-sm mx-auto ">
+        <CardHeader>
+          <CardTitle>Checkbox</CardTitle>
+          <CardDescription>
+            Checkboxes are used to allow the user to select one or more options
+            from a set.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-6">
+          <div className="flex items-center gap-3">
+            <Checkbox id="terms" />
+            <Label htmlFor="terms">Accept terms and Conditions</Label>
+          </div>
+          <div className="flex items-start gap-3">
+            <Checkbox id="terms-2" defaultChecked />
+            <div className="grid gap-2">
+              <Label htmlFor="terms-2">Accept terms and conditions</Label>
+              <p className="text-muted-foreground text-sm">
+                By clicking this checkbox, you agree to the terms and
+                conditions.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Checkbox id="toggle" disabled />
+            <Label htmlFor="toggle">Enable notifications</Label>
+          </div>
+          <Label className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950">
+            <Checkbox
+              id="toggle-2"
+              defaultChecked
+              className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700"
+            />
+            <div className="grid gap-1.5 font-normal">
+              <p className="text-sm leading-none font-medium">
+                Enable notifications
+              </p>
+              <p className="text-muted-foreground text-sm">
+                You can enable or disable notifications at any time.
+              </p>
+            </div>
+          </Label>
         </CardContent>
       </Card>
     </div>
