@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import { SearchForm } from "@/components/search-form";
@@ -25,59 +27,67 @@ const data = {
       items: [
         {
           title: "Combobox",
-          url: "#",
-          isActive: true,
+          key: "combobox",
         },
         {
-          title: "Data Fetching",
-          url: "#",
+          title: "Data Table",
+          key: "data-table",
         },
         {
-          title: "Rendering",
-          url: "#",
+          title: "Date Picker",
+          key: "date-picker",
         },
         {
-          title: "Caching",
-          url: "#",
+          title: "Dialog",
+          key: "dialog",
         },
         {
-          title: "Styling",
-          url: "#",
+          title: "Drawer",
+          key: "drawer",
         },
         {
-          title: "Optimizing",
-          url: "#",
+          title: "Dropdown Menu",
+          key: "dropdown-menu",
         },
         {
-          title: "Configuring",
-          url: "#",
+          title: "Input",
+          key: "input",
         },
         {
-          title: "Testing",
-          url: "#",
+          title: "Input OTP",
+          key: "input-otp",
         },
         {
-          title: "Authentication",
-          url: "#",
+          title: "Navigation Menu",
+          key: "navigation-menu",
         },
         {
-          title: "Deploying",
-          url: "#",
+          title: "Pagination",
+          key: "pagination",
         },
         {
-          title: "Upgrading",
-          url: "#",
+          title: "Popover",
+          key: "popover",
         },
         {
-          title: "Examples",
-          url: "#",
+          title: "Radio Group",
+          key: "radio-group",
         },
       ],
     },
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  activeComponent: string;
+  onComponentChange: (component: string) => void;
+}
+
+export function AppSidebar({
+  activeComponent,
+  onComponentChange,
+  ...props
+}: AppSidebarProps) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -96,8 +106,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+                    <SidebarMenuButton
+                      isActive={activeComponent === item.key}
+                      onClick={() => onComponentChange(item.key)}
+                    >
+                      {item.title}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
