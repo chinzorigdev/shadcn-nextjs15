@@ -30,6 +30,7 @@ import NavigationMenuDemo from "@/components/demos/navigation-menu-demo";
 import PaginationDemo from "@/components/demos/pagination-demo";
 import PopoverDemo from "@/components/demos/popover-demo";
 import RadioGroupDemo from "@/components/demos/radio-group-demo";
+import SheetDemo from "@/components/demos/sheet-demo";
 
 const componentMap: Record<string, React.ComponentType> = {
   combobox: ComboboxDemo,
@@ -44,6 +45,7 @@ const componentMap: Record<string, React.ComponentType> = {
   pagination: PaginationDemo,
   popover: PopoverDemo,
   "radio-group": RadioGroupDemo,
+  sheet: SheetDemo,
 };
 
 const componentTitles: Record<string, string> = {
@@ -59,6 +61,7 @@ const componentTitles: Record<string, string> = {
   pagination: "Pagination",
   popover: "Popover",
   "radio-group": "Radio Group",
+  sheet: "Sheet",
 };
 
 export default function Page() {
